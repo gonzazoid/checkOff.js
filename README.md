@@ -1,4 +1,6 @@
-<h3>off.js</h3>
+<img src="https://img.shields.io/travis/gonzazoid/path.js.svg"></img>
+<hr>
+<h3>checkOff.js</h3>
 <p>Like many other developers I was faced with the need to check for certain properties in the received objects. I have tired of writing multi-storey checks when the thought of simplifying my life came to me. Of cource there is typescript with amazing types system which is looks like contracts but type checking is working only with objects that was created in own code, not for objects that came from outside (as intercepted xmlhttprequest requests in chrome extension or post data in node.js express app) that means that type checking in compile-time does not help us in runtime. Yes, there are raml/swagger specs based on which you can build your validators, there is json schema and bunch of utils but sometimes all of them are somewhat redundant and clumsy for simple checks. Finally I wrote my checker, which is nothing more than an extended replacement of the <b>in</b> operator with minimal type checks. All this fit into one function, the code of which you see above.</p>
 
 Usage is simple — first parameter is verifiable object, second — object-pattern, the structure of which repeats the structure that we expect to see in the object under test. Suppose we want to check whether target object has req.body.formData.to property and is this property an array:
