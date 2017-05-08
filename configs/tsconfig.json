@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "lib": ["ES7"]
+       ,"target": "ES5"
+       ,"module": "commonjs"
+       ,"removeComments": true
+       ,"noImplicitAny": true
+       ,"declaration": true
+       ,"outDir" : "../build"
+    },
+    "files": [
+        "../lib/index.ts"
+       ,"../lib/tests.ts"
+    ]
+}
