@@ -15,17 +15,26 @@ if type checking is not needed we can specify null in the pattern object and as 
 ```
 const target = {req: {body: {formData: {to: 1, body:[1,2,3]}}}};
 
-console.log(checkOff(target, {req: {body: {formData: {to: []}}}}));
+console.log(checkOff(target, {req: {body: {formData: {to: null}}}}));
 ```
 
 That is, for verification it is enough to specify in the pattern the value of the same type that you want to get in the object being checked:
 <ul>
-<li>“” for string</li>
-<li>0 for number</li>
+<li>“” or any string for string</li>
+<li>0 or any number for number</li>
+<li>!0 or true or false for boolean</li>
 <li>[] for array</li>
 <li>{} for object</li>
-<li>() => {} for function</li>
+<li>() => {} or any function for function</li>
 <li>null — there is no type checking, only the presence of a property is checked</li>
+</ul>
+
+<ul>
+<li>[“”] for string typed array</li>
+<li>[0] for number typed array</li>
+<li>[!0] for boolean array</li>
+<li>[{}] for object typed array</li>
+<li>[() => {}] for function typed array</li>
 </ul>
 
 <p>I wrote this for node but it will work in browsers, I do not use any new fashionable things but perhaps you have to replace the arrow function with a common definition. I did not write a check of objects’ type (instance of class) since then I would have to write something like new SomeClass () in the pattern object that could be heavy, but if someone needs it — feel free to say.</p>
